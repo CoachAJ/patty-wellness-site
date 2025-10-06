@@ -67,6 +67,3 @@ https://www.pattywellness.netlify.app/*    https://pattywellness.netlify.app/:sp
 
 # API proxying (if needed for external integrations)
 /api/*             https://api.example.com/:splat 200
-
-# Netlify Identity redirect
-/.netlify/identity /admin/                        302

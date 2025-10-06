@@ -46,28 +46,5 @@
 # Redirects for admin panel and SPA behavior
 [[redirects]]
   from = "/admin/*"
-  to = "/admin/index.html"
+  to   = "/admin/index.html"
   status = 200
-
-[[redirects]]
-  from = "/.netlify/identity/*"
-  to = "/.netlify/identity/"
-  status = 200
-
-# Plugin configuration
-[[plugins]]
-  package = "netlify-plugin-sitemap"
-  
-  [plugins.inputs]
-    baseUrl = "https://pattywellness.netlify.app"
-    pretty = true
-    trailingSlash = false
-
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
-  
-  [plugins.inputs]
-    performance = 0.9
-    accessibility = 0.9
-    best-practices = 0.9
-    seo = 0.9
