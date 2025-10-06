@@ -1,0 +1,72 @@
+# Netlify redirects and rewrites
+# Homepage variations
+/home              /                    301
+/index             /                    301
+
+# Product pages
+/shop              /products.html       301
+/supplements       /products.html       301
+/youngevity        /products.html       301
+
+# Article redirects
+/blog              /articles.html       301
+/health-tips       /articles.html       301
+/wellness          /articles.html       301
+
+# About page variations
+/story             /about.html          301
+/bio               /about.html          301
+/patty             /about.html          301
+
+# Contact variations
+/get-in-touch      /contact.html        301
+/reach-out         /contact.html        301
+/questions         /contact.html        301
+
+# Specific product redirects to Youngevity
+/start-pak         https://102336374.youngevity.com/us_en/healthy-body-start-pak-3-0.html                301
+/collagen          https://102336374.youngevity.com/us_en/health-nutrition/collagen-products.html        301
+/cardiobeets       https://102336374.youngevity.com/us_en/youngevity-cardiobeets.html                    301
+/hgh-youth         https://102336374.youngevity.com/us_en/h-g-h-youth-complex-trade-180-capsules.html    301
+/sta-balanced      https://102336374.youngevity.com/us_en/sta-balanced-trade.html                         301
+/gluco-gel         https://102336374.youngevity.com/us_en/ultimate-gluco-gel-240-caps.html?sku=21252      301
+/3point0           https://102336374.youngevity.com/us_en/3point0.html                                    301
+
+# Health topic shortcuts
+/gut-health        /articles.html#gut-health      301
+/blood-sugar       /articles.html#blood-sugar     301
+/leaky-gut         /articles.html#gut-health      301
+/triangle          /#triangle                     301
+/90-nutrients      /articles.html#90-nutrients    301
+
+# Legacy URLs (if migrating from another platform)
+/wordpress/*       /                              301
+/blog/:slug        /articles.html                 301
+
+# Email preferences
+/unsubscribe       /contact.html                  301
+/subscribe         /#newsletter                   301
+
+# Social media landing pages
+/facebook          /                              301
+/instagram         /                              301
+
+# Error pages
+/404.html          /                              302
+/500.html          /                              302
+
+# Admin access
+/cms               /admin/                        301
+/dashboard         /admin/                        301
+
+# Force HTTPS and www removal
+https://www.pattywellness.netlify.app/*    https://pattywellness.netlify.app/:splat    301!
+
+# SPA fallback for admin
+/admin/*           /admin/index.html              200
+
+# API proxying (if needed for external integrations)
+/api/*             https://api.example.com/:splat 200
+
+# Netlify Identity redirect
+/.netlify/identity /admin/                        302

@@ -1,0 +1,91 @@
+# Netlify build settings
+[build]
+  publish = "."
+  command = "echo 'Static site - no build command needed'"
+
+# Form processing
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+# Redirects
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+# Enable Netlify Identity for CMS
+[[redirects]]
+  from = "/.netlify/identity/*"
+  to = "/.netlify/identity/"
+  status = 200
+
+# Form handling
+[forms]
+  contact = "/contact.html"
+  newsletter = "/"
+  "newsletter-footer" = "/contact.html"
+  "newsletter-articles" = "/articles.html"
+  "newsletter-success" = "/success.html"
+
+# Environment variables (set these in Netlify dashboard)
+# NETLIFY_EMAILS_SECRET=your_secret_here
+
+# Plugin configuration
+[[plugins]]
+  package = "netlify-plugin-sitemap"
+  
+  [plugins.inputs]
+    baseUrl = "https://pattywellness.netlify.app"
+    pretty = true
+    trailingSlash = false
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  
+  [plugins.inputs.thresholds]
+    performance = 0.9
+    accessibility = 0.9
+    best-practices = 0.9
+    seo = 0.9
+
+# Edge functions (if needed later)
+[edge_functions]
+
+# Split testing (A/B testing)
+[split_testing]
