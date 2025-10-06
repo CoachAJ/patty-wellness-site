@@ -3,20 +3,9 @@
   publish = "."
   command = "echo 'Static site - no build command needed'"
 
-# Form processing settings
+# Form processing settings - DISABLED to prevent CSS/JS issues
 [build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.html]
-  pretty_urls = true
+  skip_processing = true
 
 # Security and performance headers
 [[headers]]
