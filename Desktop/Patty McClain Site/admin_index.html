@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager - Patty McClain Wellness</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  
+  <!-- Custom CMS configuration -->
+  <script>
+    // Add custom preview styles
+    CMS.registerPreviewStyle("/css/styles.css");
+    
+    // Custom preview templates
+    CMS.registerPreviewTemplate("articles", ({entry, widgetFor, widgetsFor}) => {
+      const title = entry.getIn(['data', 'title']);
+      const description = entry.getIn(['data', 'description']);
+      const category = entry.getIn(['data', 'category']);
+      const body = widgetFor('body');
+      
+      return `
+        <div style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Inter, sans-serif;">
+          <div style="background: #2c7a7b; color: white; padding: 4px 8px; border-radius: 4px; display: inline-block; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px;">
+            ${category}
+          </div>
+          <h1 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 8px 0 16px;">${title}</h1>
+          <p style="color: #5c6a73; font-size: 1.1rem; margin-bottom: 24px;">${description}</p>
+          <div style="line-height: 1.6;">${body}</div>
+        </div>
+      `;
+    });
+    
+    // Initialize Netlify Identity
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
